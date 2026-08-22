@@ -11,30 +11,63 @@ interface Props {
 
 const { 
   title, 
-  description = "Bal Basera is a child care home, an initiative of JNP Plus Jodhpur, providing a nurturing environment.",
-  ogImage = "/photos/default-og.jpg"
+  description = "Bal Basera is a child care home in Jodhpur providing education, health, and a family-like environment to 80 children. An initiative of JNP Plus.",
+  ogImage = "/photos/20260521_180138-redacted_dot_app.jpg"
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://balbasera.jnpplus.org').href;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href={canonicalURL} />
     
     <!-- Open Graph / Social -->
+    <meta property="og:locale" content="en_IN" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={`${title} | Bal Basera`} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={new URL(ogImage, 'https://balbasera.jnpplus.org').href} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Bal Basera" />
     
     <title>{title} | Bal Basera</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- GEO & LLM Optimization: JSON-LD Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "NGO",
+      "name": "Bal Basera",
+      "alternateName": "Bal Basera Child Care Home",
+      "description": description,
+      "foundingDate": "2010-08-01",
+      "parentOrganization": {
+        "@type": "NGO",
+        "name": "JNP Plus (Jodhpur Network of People Living with HIV/AIDS Sansthan)",
+        "url": "https://jnpplus.org"
+      },
+      "location": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Jodhpur",
+          "addressRegion": "Rajasthan",
+          "addressCountry": "India"
+        }
+      },
+      "url": "https://balbasera.jnpplus.org",
+      "image": new URL(ogImage, 'https://balbasera.jnpplus.org').href
+    })} />
   </head>
   <body>
     <Navbar />
