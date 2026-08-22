@@ -1,0 +1,191 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const sections = [
+  {
+    title: "Learning",
+    photos: [
+      { src: "/photos/IMG_20260610_115054-redacted_dot_app.jpg", caption: "In the Classroom" },
+      { src: "/photos/20260708_153202.jpg", caption: "Computer Lab" },
+      { src: "/photos/IMG_20260605_113422-redacted_dot_app.jpg", caption: "STEM Learning" }
+    ]
+  },
+  {
+    title: "Playing",
+    photos: [
+      { src: "/photos/20260708_174214-redacted_dot_app.jpg", caption: "Volleyball" },
+      { src: "/photos/20260430_181858.jpg", caption: "Morning Exercises" },
+      { src: "/photos/20260521_180138-redacted_dot_app.jpg", caption: "Yoga Session" },
+      { src: "/photos/20260620_062152-redacted_dot_app.jpg", caption: "Yoga Day" }
+    ]
+  },
+  {
+    title: "Creating",
+    photos: [
+      { src: "/photos/20260526_115654.jpg", caption: "Newspaper Craft" },
+      { src: "/photos/20260526_115817.jpg", caption: "Craft Session" },
+      { src: "/photos/IMG_20260610_120436.jpg", caption: "Mehndi Art" },
+      { src: "/photos/IMG_20251224_190229.jpg", caption: "Christmas Painting" }
+    ]
+  },
+  {
+    title: "Celebrating",
+    photos: [
+      { src: "/photos/20260302_095116-redacted_dot_app.jpg", caption: "Holi" },
+      { src: "/photos/20260302_095117-redacted_dot_app.jpg", caption: "Holi Group" },
+      { src: "/photos/20260301_164420-redacted_dot_app.jpg", caption: "Janmashtami" }
+    ]
+  },
+  {
+    title: "Living",
+    photos: [
+      { src: "/photos/20260708_141301.jpg", caption: "Girls TV Time" },
+      { src: "/photos/20260708_192933-redacted_dot_app.jpg", caption: "Boys TV Time" },
+      { src: "/photos/20260708_161916-redacted_dot_app.jpg", caption: "Garden" },
+      { src: "/photos/20260510_180235-redacted_dot_app.jpg", caption: "Visitor Interaction" }
+    ]
+  }
+];
+---
+
+<Layout title="Gallery | Bal Basera">
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="section-label">Photo Gallery</span>
+        <h1>Moments That Matter</h1>
+        <p class="subtitle">Life at Bal Basera, through our lens.</p>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <div class="container">
+        {sections.map(section => (
+          <div class="gallery-section">
+            <h2>{section.title}</h2>
+            <div class="grid">
+              {section.photos.map(photo => (
+                <div class="photo-card">
+                  <img src={photo.src} alt={photo.caption} loading="lazy" />
+                  <p class="caption">{photo.caption}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  :root {
+    --color-sunflower: #F4A623;
+    --color-sky: #4A90D9;
+    --color-warm-white: #FFF9F0;
+    --color-charcoal: #2D2D2D;
+    --color-light-gray: #f5f5f5;
+  }
+
+  main {
+    color: var(--color-charcoal);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .hero {
+    background-color: var(--color-warm-white);
+    padding: 3rem 0 2rem 0;
+    text-align: center;
+  }
+
+  .section-label {
+    display: inline-block;
+    color: var(--color-sky);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    margin: 0 0 1rem 0;
+    color: var(--color-charcoal);
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+    color: #555;
+    margin: 0;
+  }
+
+  .gallery {
+    padding: 3rem 0;
+    background-color: #ffffff;
+  }
+
+  .gallery-section {
+    margin-bottom: 3rem;
+  }
+
+  .gallery-section h2 {
+    font-size: 1.75rem;
+    color: var(--color-sky);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-sunflower);
+    display: inline-block;
+    padding-bottom: 0.25rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .photo-card {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+
+  .photo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .photo-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .caption {
+    padding: 1rem;
+    margin: 0;
+    font-weight: 500;
+    text-align: center;
+    color: #444;
+  }
+
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

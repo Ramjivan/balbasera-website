@@ -1,0 +1,450 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Bal Basera - A Home. A Family. A Future." description="Providing love, education, and dignity to 80 children in Jodhpur — an initiative of JNP Plus.">
+  <main>
+    <!-- 1. Hero -->
+    <section class="hero">
+      <div class="hero-bg">
+        <img src="/photos/20260521_180138-redacted_dot_app.jpg" alt="Children doing yoga on turf" />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <span class="section-label">Bal Basera | Since 2010</span>
+        <h1>A Home. A Family.<br/><em>A Future.</em></h1>
+        <p class="subtitle">Providing love, education, and dignity to 80 children in Jodhpur &mdash; an initiative of JNP Plus.</p>
+      </div>
+    </section>
+
+    <!-- 2. Impact Stats Strip -->
+    <section class="impact-stats">
+      <div class="container stats-grid">
+        <div class="stat-card">
+          <span class="stat-value">80</span>
+          <span class="stat-label">Children in Care</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">2010</span>
+          <span class="stat-label">Year Established</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">100%</span>
+          <span class="stat-label">School Enrollment</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">16+</span>
+          <span class="stat-label">Years of Service</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. A Day at Bal Basera -->
+    <section class="day-at-bal-basera">
+      <div class="container">
+        <h2>A Day at Bal Basera</h2>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-img-wrapper">
+              <img src="/photos/20260430_181858.jpg" alt="Morning activities" />
+            </div>
+            <div class="card-content">
+              <h3>Morning</h3>
+              <p>The day begins with stretching, yoga, and fresh air in the open ground.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img-wrapper">
+              <img src="/photos/IMG_20260610_115054-redacted_dot_app.jpg" alt="School hours" />
+            </div>
+            <div class="card-content">
+              <h3>School Hours</h3>
+              <p>Every child attends local school. Education is non-negotiable.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img-wrapper">
+              <img src="/photos/20260708_153202.jpg" alt="Afternoon computing" />
+            </div>
+            <div class="card-content">
+              <h3>Afternoon</h3>
+              <p>Digital literacy: learning typing, browsing, and basic computing.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img-wrapper">
+              <img src="/photos/20260526_115654.jpg" alt="Creative time" />
+            </div>
+            <div class="card-content">
+              <h3>Creative Time</h3>
+              <p>Hands-on creativity builds confidence and self-expression.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img-wrapper">
+              <img src="/photos/20260708_174214-redacted_dot_app.jpg" alt="Evening play" />
+            </div>
+            <div class="card-content">
+              <h3>Evening</h3>
+              <p>Sports, play, and the freedom to just be children.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img-wrapper">
+              <img src="/photos/20260708_192933-redacted_dot_app.jpg" alt="Night activities" />
+            </div>
+            <div class="card-content">
+              <h3>Night</h3>
+              <p>A normal evening: football on TV, friends beside you, home around you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Quote Section -->
+    <section class="quote-section">
+      <div class="container">
+        <blockquote>
+          "Bal Basera is not an institution. It is a family &mdash; where every child is seen, valued, and given a future worth believing in."
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 5. CTA Section -->
+    <section class="cta-section">
+      <div class="container cta-content">
+        <h2>Partner with Bal Basera</h2>
+        <p>We welcome partnerships with government bodies, CSR programmes, and institutional donors committed to child welfare. To learn more or request a formal presentation, get in touch.</p>
+        <div class="cta-buttons">
+          <a href="/contact/" class="btn btn-primary">Get in Touch</a>
+          <a href="/programs/" class="btn btn-secondary">Explore Programs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Global reset/variables expected to be in Layout or global.css, but we'll use fallbacks just in case */
+  :root {
+    --color-sunflower: #F4A623;
+    --color-skyblue: #4A90D9;
+    --color-warmwhite: #FFF9F0;
+    --color-charcoal: #2D2D2D;
+    --color-text: #333333;
+    --font-sans: system-ui, -apple-system, sans-serif;
+    --font-serif: Georgia, "Times New Roman", serif;
+  }
+
+  main {
+    font-family: var(--font-sans);
+    color: var(--color-charcoal);
+    line-height: 1.6;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* 1. Hero Section */
+  .hero {
+    position: relative;
+    height: 70vh;
+    min-height: 500px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      height: 90vh;
+    }
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 3rem 1.5rem;
+    max-width: 800px;
+    color: white;
+  }
+
+  @media (min-width: 768px) {
+    .hero-content {
+      padding: 4rem 3rem;
+    }
+  }
+
+  .section-label {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    color: var(--color-sunflower);
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin: 0 0 1rem 0;
+    font-weight: 700;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--color-skyblue);
+  }
+
+  @media (min-width: 768px) {
+    .hero h1 {
+      font-size: 4rem;
+    }
+  }
+
+  .hero .subtitle {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  @media (min-width: 768px) {
+    .hero .subtitle {
+      font-size: 1.25rem;
+    }
+  }
+
+  /* 2. Impact Stats */
+  .impact-stats {
+    background: linear-gradient(135deg, var(--color-sunflower), var(--color-skyblue));
+    padding: 3rem 0;
+    color: white;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-value {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  /* 3. A Day at Bal Basera */
+  .day-at-bal-basera {
+    padding: 5rem 0;
+    background-color: var(--color-warmwhite);
+  }
+
+  .day-at-bal-basera h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: var(--color-charcoal);
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-img-wrapper {
+    height: 240px;
+    overflow: hidden;
+  }
+
+  .card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .card:hover .card-img-wrapper img {
+    transform: scale(1.05);
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .card-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    color: var(--color-skyblue);
+  }
+
+  .card-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-text);
+  }
+
+  /* 4. Quote Section */
+  .quote-section {
+    padding: 6rem 0;
+    background-color: var(--color-sunflower);
+    color: var(--color-charcoal);
+    text-align: center;
+  }
+
+  .quote-section blockquote {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-style: italic;
+    line-height: 1.4;
+    margin: 0 auto;
+    max-width: 800px;
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .quote-section blockquote {
+      font-size: 2.25rem;
+    }
+  }
+
+  /* 5. CTA Section */
+  .cta-section {
+    padding: 5rem 0;
+    background-color: white;
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-charcoal);
+  }
+
+  .cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    color: var(--color-text);
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (min-width: 480px) {
+    .cta-buttons {
+      flex-direction: row;
+    }
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-align: center;
+    min-width: 200px;
+  }
+
+  .btn-primary {
+    background-color: var(--color-skyblue);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #3878b6;
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-charcoal);
+    border: 2px solid var(--color-charcoal);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-charcoal);
+    color: white;
+  }
+</style>

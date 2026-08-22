@@ -1,0 +1,231 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="About Us | Bal Basera">
+  <main>
+    <section class="hero">
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <span class="section-label">Our Story</span>
+        <h1>Where Every Child<br><em>Finds a Family.</em></h1>
+      </div>
+    </section>
+
+    <section class="the-need container">
+      <h2>The Need</h2>
+      <p>Children orphaned or made vulnerable by HIV/AIDS in Rajasthan face immense challenges, including stigma, poverty, and a profound lack of family support. Without intervention, these children are often trapped in cycles of vulnerability. Bal Basera exists to break this cycle, providing a safe, loving, and nurturing environment where they can heal, grow, and build a brighter future.</p>
+    </section>
+
+    <section class="the-founding bg-light">
+      <div class="container">
+        <h2>The Founding</h2>
+        <p>Bal Basera was established in August 2010 by Mr. Dinesh Joshi through JNP Plus (Jodhpur Network of People Living with HIV/AIDS Sansthan). The home was created with a clear vision: to offer a sanctuary for children who had nowhere else to turn. It is formally registered under the Juvenile Justice Act 2015 and is overseen by the Child Welfare Committee, Jodhpur, ensuring the highest standards of care and accountability.</p>
+      </div>
+    </section>
+
+    <section class="facility container image-text">
+      <div class="text-content">
+        <h2>The Facility Today</h2>
+        <p>Today, Bal Basera is a full residential care home, not just a day center. It is a true home where children live, learn, and play. Our physical space is designed to support every aspect of a child's development and includes:</p>
+        <ul>
+          <li>Separate, safe dormitories for boys and girls</li>
+          <li>A dedicated study hall for focused learning</li>
+          <li>A fully equipped computer lab for digital literacy</li>
+          <li>A spacious playground and a beautiful garden</li>
+          <li>A nutritious kitchen providing balanced meals</li>
+          <li>A TV and recreation room for relaxation and entertainment</li>
+        </ul>
+      </div>
+      <div class="image-content">
+        <img src="/photos/20260708_161916-redacted_dot_app.jpg" alt="Child enjoying the garden at Bal Basera" loading="lazy" />
+      </div>
+    </section>
+
+    <section class="compliance bg-dark">
+      <div class="container">
+        <h2>Legal & Compliance</h2>
+        <p>Institutional trust is paramount to our mission. Bal Basera operates with complete transparency and adherence to all legal frameworks:</p>
+        <ul class="compliance-list">
+          <li>Registered under the Juvenile Justice (JJ) Act 2015</li>
+          <li>Overseen by the Child Welfare Committee (CWC), Jodhpur</li>
+          <li>FCRA Certified for international contributions</li>
+          <li>80G Tax Exemption available</li>
+          <li>Parent Organization: JNP Plus - An initiative of JNP Plus, Jodhpur</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="parent-org container">
+      <h2>Our Parent Organization</h2>
+      <p>Bal Basera is a proud initiative of <strong>JNP Plus (Jodhpur Network of People Living with HIV/AIDS Sansthan)</strong>. Founded in 2006, JNP Plus is a dedicated non-governmental organization committed to the welfare, support, and empowerment of people and families affected by HIV/AIDS throughout Rajasthan.</p>
+      <a href="https://jnpplus.org" class="btn" target="_blank" rel="noopener noreferrer">Visit JNP Plus Website</a>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    color: var(--charcoal, #2D2D2D);
+    background-color: var(--warm-white, #FFF9F0);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .bg-light {
+    background-color: #ffffff;
+    padding: 4rem 0;
+  }
+
+  .bg-dark {
+    background-color: var(--charcoal, #2D2D2D);
+    color: var(--warm-white, #FFF9F0);
+    padding: 4rem 0;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    height: 460px;
+    background-image: url('/photos/20260302_095116-redacted_dot_app.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 100%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    color: var(--warm-white, #FFF9F0);
+  }
+
+  .section-label {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    color: var(--sunflower-yellow, #F4A623);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--sky-blue, #4A90D9);
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: var(--sky-blue, #4A90D9);
+    margin-bottom: 1.5rem;
+  }
+  
+  .bg-dark h2 {
+    color: var(--sunflower-yellow, #F4A623);
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Image and Text Layout */
+  .image-text {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .image-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+  }
+
+  /* Compliance List */
+  .compliance-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .compliance-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .compliance-list li::before {
+    content: "-";
+    color: var(--sunflower-yellow, #F4A623);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+  }
+
+  /* Button */
+  .btn {
+    display: inline-block;
+    background-color: var(--sky-blue, #4A90D9);
+    color: var(--warm-white, #FFF9F0);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: #3878b6;
+  }
+
+  /* Responsive Design */
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3.5rem;
+    }
+    
+    .image-text {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

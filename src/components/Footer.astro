@@ -1,0 +1,168 @@
+---
+const links = [
+  { name: 'Home', url: '/' },
+  { name: 'About', url: '/about/' },
+  { name: 'Programs', url: '/programs/' },
+  { name: 'Gallery', url: '/gallery/' },
+  { name: 'Contact', url: '/contact/' },
+];
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-accent"></div>
+  <div class="container footer-container">
+    <div class="footer-grid">
+      
+      <div class="footer-col">
+        <h3>Bal Basera</h3>
+        <p class="about-text">
+          A nurturing child care home dedicated to providing education, health, and a loving environment for children.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="quick-links">
+          {links.map((link) => (
+            <li>
+              <a href={link.url}>{link.name}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact Info</h3>
+        <ul class="contact-info">
+          <li>
+            <strong>Address:</strong> Jodhpur, Rajasthan, India
+          </li>
+          <li>
+            <strong>Phone:</strong> +91 XXXXX XXXXX
+          </li>
+          <li>
+            <strong>Email:</strong> contact@balbasera.example.com
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container bottom-container">
+      <p>&copy; 2024-{currentYear} Bal Basera. All rights reserved.</p>
+      <p>
+        An Initiative of <a href="https://jnpplus.org" target="_blank" rel="noopener noreferrer" class="jnp-link">JNP Plus Jodhpur</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--charcoal);
+    color: var(--warm-white);
+    margin-top: auto;
+  }
+
+  .footer-accent {
+    height: 6px;
+    background: linear-gradient(90deg, var(--sunflower), var(--sunflower-light));
+    width: 100%;
+  }
+
+  .footer-container {
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .footer-col h3 {
+    color: var(--sunflower);
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-text {
+    color: var(--ivory-dark);
+    max-width: 300px;
+  }
+
+  .quick-links {
+    list-style: none;
+  }
+
+  .quick-links li {
+    margin-bottom: 0.75rem;
+  }
+
+  .quick-links a {
+    color: var(--ivory-dark);
+    transition: color 0.2s ease;
+  }
+
+  .quick-links a:hover {
+    color: var(--sunflower-light);
+  }
+
+  .contact-info {
+    list-style: none;
+    color: var(--ivory-dark);
+  }
+
+  .contact-info li {
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-info strong {
+    color: var(--warm-white);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--charcoal-soft);
+    padding: 1.5rem 0;
+    font-size: 0.875rem;
+    color: var(--charcoal-muted);
+  }
+
+  .bottom-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .bottom-container {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  .jnp-link {
+    color: var(--sunflower);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .jnp-link:hover {
+    color: var(--sunflower-light);
+    text-decoration: underline;
+  }
+</style>
