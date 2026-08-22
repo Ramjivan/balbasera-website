@@ -6,7 +6,6 @@ const links = [
   { name: 'Gallery', url: '/gallery/' },
   { name: 'Contact', url: '/contact/' },
 ];
-const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer">
@@ -52,13 +51,20 @@ const currentYear = new Date().getFullYear();
 
   <div class="footer-bottom">
     <div class="container bottom-container">
-      <p>&copy; 2024-{currentYear} Bal Basera. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Bal Basera. All rights reserved.</p>
       <p>
         An Initiative of <a href="https://jnpplus.org" target="_blank" rel="noopener noreferrer" class="jnp-link">JNP Plus Jodhpur</a>
       </p>
     </div>
   </div>
 </footer>
+
+<script>
+  const yearElement = document.getElementById('year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear().toString();
+  }
+</script>
 
 <style>
   .footer {
