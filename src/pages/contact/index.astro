@@ -16,39 +16,49 @@ import Layout from '../../layouts/Layout.astro';
       <div class="container contact-grid">
         <div class="contact-form">
           <h2>Send a Message</h2>
-          <form action="#" method="POST">
+          <form id="bb-contact-form" novalidate>
+            <input type="hidden" name="_subject" value="New Inquiry — Bal Basera Website (balbasera.jnpplus.org)" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display:none" />
+
             <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required />
+              <label for="name">Your Name *</label>
+              <input type="text" id="name" name="name" placeholder="e.g. Ramesh Kumar" required />
             </div>
             
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required />
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required />
             </div>
             
             <div class="form-group">
-              <label for="phone">Phone (Optional)</label>
-              <input type="tel" id="phone" name="phone" />
+              <label for="phone">Phone Number (Optional)</label>
+              <input type="tel" id="phone" name="phone" placeholder="+91 98XXX XXXXX" />
             </div>
             
             <div class="form-group">
-              <label for="subject">Subject</label>
+              <label for="subject">Subject *</label>
               <select id="subject" name="subject" required>
+                <option value="">Select a topic</option>
                 <option value="General Inquiry">General Inquiry</option>
-                <option value="Partnership/CSR">Partnership/CSR</option>
-                <option value="Volunteer">Volunteer</option>
-                <option value="Visit Request">Visit Request</option>
+                <option value="Partnership/CSR">Partnership / CSR Collaboration</option>
+                <option value="Volunteer">Volunteering at Bal Basera</option>
+                <option value="Visit Request">Visit / Meet the Children</option>
+                <option value="Child Support/Sponsorship">Child Support / Sponsorship</option>
                 <option value="Other">Other</option>
               </select>
             </div>
             
             <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
+              <label for="message">Your Message *</label>
+              <textarea id="message" name="message" rows="5" placeholder="How can we help you or how would you like to support Bal Basera?…" required></textarea>
             </div>
+
+            <!-- Cloudflare Turnstile Bot Protection -->
+            <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="light" style="margin-bottom: 1.25rem;"></div>
             
-            <button type="submit" class="submit-btn">Send Message</button>
+            <button type="submit" id="bb-submit-btn" class="submit-btn">Send Message →</button>
+            <p style="font-size:0.8rem;color:#777;margin-top:0.75rem;text-align:center;">Your information is kept confidential and sent directly to our team.</p>
           </form>
         </div>
         
@@ -269,3 +279,56 @@ import Layout from '../../layouts/Layout.astro';
     }
   }
 </style>
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<script>
+const form = document.getElementById('bb-contact-form') as HTMLFormElement;
+const btn  = document.getElementById('bb-submit-btn') as HTMLButtonElement;
+
+form?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending Message...';
+  btn.style.opacity = '0.8';
+
+  const formData = new FormData(form);
+
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/jodhpursansthan@yahoo.co.in', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    const data = await res.json();
+
+    if (res.ok && data.success !== 'false') {
+      btn.textContent = "✅ Message sent! We'll be in touch soon.";
+      btn.style.background = '#2E7D32';
+      form.reset();
+    } else {
+      btn.textContent = "⚠️ Error sending. Please email us directly.";
+      btn.style.background = '#D32F2F';
+    }
+  } catch (err) {
+    btn.textContent = "⚠️ Error sending. Please email us directly.";
+    btn.style.background = '#D32F2F';
+  } finally {
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+      btn.style.opacity = '1';
+      btn.disabled = false;
+    }, 5000);
+  }
+});
+</script>
