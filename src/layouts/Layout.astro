@@ -2,20 +2,173 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import config from '../data/config.json';
 
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogType?: string;
+  pageType?: string;
+  faqs?: Array<{ question: string; answer: string }>;
 }
 
 const { 
   title, 
-  description = "Bal Basera is a child care home in Jodhpur providing education, health, and a family-like environment to 80 children. An initiative of JNP Plus.",
-  ogImage = "/photos/20260521_180138-redacted_dot_app.jpg"
+  description = config.description,
+  ogImage = "/photos/20260521_180138-redacted_dot_app.jpg",
+  ogType = "website",
+  pageType = "WebPage",
+  faqs = [
+    {
+      question: "What is Bal Basera?",
+      answer: "Bal Basera (बाल बसेरा) is a registered Child Care Home in Jodhpur, Rajasthan, established in August 2010 under the Juvenile Justice Act 2015. It provides a loving residential home, schooling, nutrition, and healthcare for 80 children orphaned or affected by HIV."
+    },
+    {
+      question: "Who oversees Bal Basera?",
+      answer: "Bal Basera is overseen by the Child Welfare Committee (CWC), Jodhpur, and is an initiative of JNP Plus (Jodhpur Network of People Living with HIV Sansthan)."
+    },
+    {
+      question: "Where is Bal Basera located?",
+      answer: "Bal Basera is located at Plot No. 17, Gayatri Nagar, Opposite Paliwal Eye Hospital, Pal Road, Jodhpur, Rajasthan - 342008. Phone: +91 94135 77969."
+    }
+  ]
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, 'https://balbasera.jnpplus.org').href;
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://balbasera.jnpplus.org';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const fullOgImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`;
+
+// Generate dynamic breadcrumbs for any current or future route
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbItems = [
+  {
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": siteUrl
+  }
+];
+
+let accumulatedPath = '';
+pathSegments.forEach((segment, idx) => {
+  accumulatedPath += `/${segment}`;
+  const formattedName = segment
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+  breadcrumbItems.push({
+    "@type": "ListItem",
+    "position": idx + 2,
+    "name": formattedName,
+    "item": `${siteUrl}${accumulatedPath}/`
+  });
+});
+
+// Structured Knowledge Graph Schema for GEO & Search Engines
+const schemaGraph: any[] = [
+  {
+    "@type": ["NGO", "ChildCare"],
+    "@id": `${siteUrl}/#organization`,
+    "name": config.name,
+    "alternateName": [
+      config.shortName,
+      "Bal Basera Child Care Home",
+      "बाल बसेरा",
+      "बाल बसेरा बाल देखरेख गृह"
+    ],
+    "url": siteUrl,
+    "image": fullOgImageUrl,
+    "description": description,
+    "slogan": config.tagline,
+    "foundingDate": "2010-08-01",
+    "parentOrganization": {
+      "@type": "NGO",
+      "name": "JNP Plus (Jodhpur Network of People Living with HIV/AIDS Sansthan)",
+      "url": "https://jnpplus.org"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": config.contact.address,
+      "addressLocality": "Jodhpur",
+      "addressRegion": "Rajasthan",
+      "postalCode": "342008",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 26.2420127,
+      "longitude": 72.9743049
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Jodhpur" },
+      { "@type": "State", "name": "Rajasthan" },
+      { "@type": "Country", "name": "India" }
+    ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": config.contact.phoneRaw || "+919413577969",
+        "contactType": "support",
+        "areaServed": "IN",
+        "availableLanguage": ["Hindi", "English", "Marwari"],
+        "hoursAvailable": "Mo-Sa 09:00-18:00"
+      }
+    ],
+    "knowsAbout": [
+      "Pediatric HIV/AIDS Care & Nutrition in Rajasthan",
+      "Child Care Home under Juvenile Justice Act 2015",
+      "Child Welfare Committee (CWC) Jodhpur Standards",
+      "Antiretroviral Therapy (ART) Adherence for Children",
+      "Computer Lab & Digital Literacy for Underprivileged Children",
+      "100% School Enrollment Programs"
+    ]
+  },
+  {
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    "url": siteUrl,
+    "name": config.shortName,
+    "description": config.description,
+    "publisher": { "@id": `${siteUrl}/#organization` },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@type": pageType,
+    "@id": `${canonicalURL.toString()}#webpage`,
+    "url": canonicalURL.toString(),
+    "name": title,
+    "description": description,
+    "isPartOf": { "@id": `${siteUrl}/#website` },
+    "about": { "@id": `${siteUrl}/#organization` },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@type": "BreadcrumbList",
+    "@id": `${canonicalURL.toString()}#breadcrumb`,
+    "itemListElement": breadcrumbItems
+  }
+];
+
+if (faqs && faqs.length > 0) {
+  schemaGraph.push({
+    "@type": "FAQPage",
+    "@id": `${canonicalURL.toString()}#faq`,
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.answer
+      }
+    }))
+  });
+}
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": schemaGraph
+};
 ---
 
 <!DOCTYPE html>
@@ -30,19 +183,35 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://balbasera.jnpplus.org'
       gtag('js', new Date());
       gtag('config', 'G-788KQZRJ8D');
     </script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- Local GEO Optimization -->
+    <meta name="geo.region" content="IN-RJ" />
+    <meta name="geo.placename" content="Jodhpur, Rajasthan, India" />
+    <meta name="geo.position" content="26.2420127;72.9743049" />
+    <meta name="ICBM" content="26.2420127, 72.9743049" />
     
     <!-- Open Graph / Social -->
     <meta property="og:locale" content="en_IN" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={`${title} | Bal Basera`} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, 'https://balbasera.jnpplus.org').href} />
+    <meta property="og:image" content={fullOgImageUrl} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content="Bal Basera" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={`${title} | Bal Basera`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImageUrl} />
     
     <title>{title} | Bal Basera</title>
     
@@ -51,31 +220,8 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://balbasera.jnpplus.org'
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     
-    <!-- GEO & LLM Optimization: JSON-LD Schema -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "NGO",
-      "name": "Bal Basera",
-      "alternateName": "Bal Basera Child Care Home",
-      "description": description,
-      "foundingDate": "2010-08-01",
-      "parentOrganization": {
-        "@type": "NGO",
-        "name": "JNP Plus (Jodhpur Network of People Living with HIV/AIDS Sansthan)",
-        "url": "https://jnpplus.org"
-      },
-      "location": {
-        "@type": "Place",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Jodhpur",
-          "addressRegion": "Rajasthan",
-          "addressCountry": "India"
-        }
-      },
-      "url": "https://balbasera.jnpplus.org",
-      "image": new URL(ogImage, 'https://balbasera.jnpplus.org').href
-    })} />
+    <!-- Generative Engine Optimization (GEO): Schema.org Knowledge Graph -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
   </head>
   <body>
     <Navbar />
@@ -89,7 +235,6 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://balbasera.jnpplus.org'
 </html>
 
 <style>
-  /* Ensure footer sticks to bottom if page content is short */
   body {
     display: flex;
     flex-direction: column;

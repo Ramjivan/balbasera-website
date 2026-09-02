@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import config from '../data/config.json';
 ---
 
 <Layout title="Bal Basera - A Home. A Family. A Future." description="Providing love, education, and dignity to 80 children in Jodhpur — an initiative of JNP Plus.">
@@ -7,35 +8,25 @@ import Layout from '../layouts/Layout.astro';
     <!-- 1. Hero -->
     <section class="hero">
       <div class="hero-bg">
-        <img src="/photos/20260521_180138-redacted_dot_app.jpg" alt="Children doing yoga on turf" />
+        <img src={config.hero.img} alt="Bal Basera children" />
         <div class="hero-overlay"></div>
       </div>
       <div class="hero-content">
-        <span class="section-label">Bal Basera | Since 2010</span>
-        <h1>A Home. A Family.<br/><em>A Future.</em></h1>
-        <p class="subtitle">Providing love, education, and dignity to 80 children in Jodhpur &mdash; an initiative of JNP Plus.</p>
+        <span class="section-label">{config.hero.tag}</span>
+        <h1 set:html={config.hero.title}></h1>
+        <p class="subtitle">{config.hero.subtitle}</p>
       </div>
     </section>
 
     <!-- 2. Impact Stats Strip -->
     <section class="impact-stats">
       <div class="container stats-grid">
-        <div class="stat-card">
-          <span class="stat-value">80</span>
-          <span class="stat-label">Children in Care</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-value">2010</span>
-          <span class="stat-label">Year Established</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-value">100%</span>
-          <span class="stat-label">School Enrollment</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-value">16+</span>
-          <span class="stat-label">Years of Service</span>
-        </div>
+        {config.stats.map(s => (
+          <div class="stat-card">
+            <span class="stat-value">{s.value}</span>
+            <span class="stat-label">{s.label}</span>
+          </div>
+        ))}
       </div>
     </section>
 
@@ -44,60 +35,17 @@ import Layout from '../layouts/Layout.astro';
       <div class="container">
         <h2>A Day at Bal Basera</h2>
         <div class="cards-grid">
-          <div class="card">
-            <div class="card-img-wrapper">
-              <img src="/photos/20260430_181858.jpg" alt="Morning activities" />
+          {config.dayAtBalBasera.map(item => (
+            <div class="card">
+              <div class="card-img-wrapper">
+                <img src={item.img} alt={item.title} loading="lazy" />
+              </div>
+              <div class="card-content">
+                <h3>{item.timeOfDay}</h3>
+                <p>{item.desc}</p>
+              </div>
             </div>
-            <div class="card-content">
-              <h3>Morning</h3>
-              <p>The day begins with stretching, yoga, and fresh air in the open ground.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-img-wrapper">
-              <img src="/photos/IMG_20260610_115054-redacted_dot_app.jpg" alt="School hours" />
-            </div>
-            <div class="card-content">
-              <h3>School Hours</h3>
-              <p>Every child attends local school. Education is non-negotiable.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-img-wrapper">
-              <img src="/photos/20260708_153202.jpg" alt="Afternoon computing" />
-            </div>
-            <div class="card-content">
-              <h3>Afternoon</h3>
-              <p>Digital literacy: learning typing, browsing, and basic computing.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-img-wrapper">
-              <img src="/photos/20260526_115654.jpg" alt="Creative time" />
-            </div>
-            <div class="card-content">
-              <h3>Creative Time</h3>
-              <p>Hands-on creativity builds confidence and self-expression.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-img-wrapper">
-              <img src="/photos/20260708_174214-redacted_dot_app.jpg" alt="Evening play" />
-            </div>
-            <div class="card-content">
-              <h3>Evening</h3>
-              <p>Sports, play, and the freedom to just be children.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-img-wrapper">
-              <img src="/photos/20260708_192933-redacted_dot_app.jpg" alt="Night activities" />
-            </div>
-            <div class="card-content">
-              <h3>Night</h3>
-              <p>A normal evening: football on TV, friends beside you, home around you.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

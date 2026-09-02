@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "title": "Education & School Enrollment",
+      "desc": "We believe education is the key to a better future. At Bal Basera, we ensure 100% enrollment for our children through strong partnerships with local schools. Beyond regular schooling, we provide after-school tutoring and dedicated access to a quiet study hall to help every child reach their full academic potential.",
+      "img": "/photos/IMG_20260610_115054-redacted_dot_app.jpg"
+    },
+    {
+      "title": "Computer & Digital Literacy",
+      "desc": "In today's world, digital literacy is essential. Our dedicated computer lab gives children the opportunity to learn typing, master software like MS Word, and understand internet basics. These essential skills prepare them for higher education and modern career opportunities.",
+      "img": "/photos/20260708_153202.jpg"
+    },
+    {
+      "title": "Yoga, Sports & Physical Wellbeing",
+      "desc": "A healthy body nurtures a healthy mind. Daily physical activity is a cornerstone of our routine. We host regular yoga sessions, facilitate outdoor exercises, and encourage team sports on our volleyball court, building both physical health and teamwork skills.",
+      "img": "/photos/20260521_180138-redacted_dot_app.jpg"
+    },
+    {
+      "title": "Arts, Crafts & Cultural Expression",
+      "desc": "Creativity allows children to process emotions and express themselves freely. We host regular creative sessions involving newspaper crafts, painting, and traditional mehndi. These activities are vital for building confidence, fine motor skills, and self-expression.",
+      "img": "/photos/20260526_115654.jpg"
+    },
+    {
+      "title": "Festivals & Celebrations",
+      "desc": "We celebrate every major festival together: Holi, Diwali, Janmashtami, Christmas, and Eid. These gatherings fill our home with joy, color, and a sense of belonging. As we often say, \"These are not events. They are proof that every child here has a childhood.\"",
+      "img": "/photos/20260301_164420-redacted_dot_app.jpg"
+    },
+    {
+      "title": "STEM & Environmental Awareness",
+      "desc": "Curiosity is nurtured through hands-on STEM (Science, Technology, Engineering, and Math) projects, such as 3D model building. We also integrate environmental awareness activities, teaching the children to respect and care for the world around them.",
+      "img": "/photos/IMG_20260605_113422-redacted_dot_app.jpg"
+    },
+    {
+      "title": "Confidence & Life Skills",
+      "desc": "We empower our children to be independent and self-assured. Through interactions with visitors and presenting their own artwork, they develop crucial public confidence. That is agency.",
+      "img": "/photos/20260510_180235-redacted_dot_app.jpg"
+    }
+  ]
+}

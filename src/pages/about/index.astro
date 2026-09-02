@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import config from '../../data/config.json';
 ---
 
 <Layout title="About Us | Bal Basera">
@@ -14,31 +15,28 @@ import Layout from '../../layouts/Layout.astro';
 
     <section class="the-need container">
       <h2>The Need</h2>
-      <p>Children orphaned or made vulnerable by HIV/AIDS in Rajasthan face immense challenges, including stigma, poverty, and a profound lack of family support. Without intervention, these children are often trapped in cycles of vulnerability. Bal Basera exists to break this cycle, providing a safe, loving, and nurturing environment where they can heal, grow, and build a brighter future.</p>
+      <p>{config.about.theNeed}</p>
     </section>
 
     <section class="the-founding bg-light">
       <div class="container">
         <h2>The Founding</h2>
-        <p>Bal Basera was established in August 2010 by Mr. Dinesh Joshi through JNP Plus (Jodhpur Network of People Living with HIV/AIDS Sansthan). The home was created with a clear vision: to offer a sanctuary for children who had nowhere else to turn. It is formally registered under the Juvenile Justice Act 2015 and is overseen by the Child Welfare Committee, Jodhpur, ensuring the highest standards of care and accountability.</p>
+        <p>{config.about.theFounding}</p>
       </div>
     </section>
 
     <section class="facility container image-text">
       <div class="text-content">
         <h2>The Facility Today</h2>
-        <p>Today, Bal Basera is a full residential care home, not just a day center. It is a true home where children live, learn, and play. Our physical space is designed to support every aspect of a child's development and includes:</p>
+        <p>{config.about.facilityDesc}</p>
         <ul>
-          <li>Separate, safe dormitories for boys and girls</li>
-          <li>A dedicated study hall for focused learning</li>
-          <li>A fully equipped computer lab for digital literacy</li>
-          <li>A spacious playground and a beautiful garden</li>
-          <li>A nutritious kitchen providing balanced meals</li>
-          <li>A TV and recreation room for relaxation and entertainment</li>
+          {config.about.facilityPoints?.map(p => (
+            <li>{p}</li>
+          ))}
         </ul>
       </div>
       <div class="image-content">
-        <img src="/photos/20260708_161916-redacted_dot_app.jpg" alt="Child enjoying the garden at Bal Basera" loading="lazy" />
+        <img src={config.about.facilityImage} alt="Child enjoying the garden at Bal Basera" loading="lazy" />
       </div>
     </section>
 
@@ -47,11 +45,9 @@ import Layout from '../../layouts/Layout.astro';
         <h2>Legal & Compliance</h2>
         <p>Institutional trust is paramount to our mission. Bal Basera operates with complete transparency and adherence to all legal frameworks:</p>
         <ul class="compliance-list">
-          <li>Registered under the Juvenile Justice (JJ) Act 2015</li>
-          <li>Overseen by the Child Welfare Committee (CWC), Jodhpur</li>
-          <li>FCRA Certified for international contributions</li>
-          <li>80G Tax Exemption available</li>
-          <li>Parent Organization: JNP Plus - An initiative of JNP Plus, Jodhpur</li>
+          {config.about.complianceList?.map(c => (
+            <li>{c}</li>
+          ))}
         </ul>
       </div>
     </section>

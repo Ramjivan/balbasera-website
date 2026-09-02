@@ -1,0 +1,173 @@
+media:
+  input: public/photos
+  output: /photos
+
+content:
+  - name: gallery
+    label: Photo Gallery Sections
+    type: file
+    path: src/data/gallery.json
+    format: json
+    fields:
+      - name: sections
+        label: Gallery Categories (Drag handles ⠿ to reorder)
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Category Title (e.g. Learning, Playing, Celebrating)
+            type: string
+            required: true
+          - name: photos
+            label: Category Photos (Drag handles ⠿ to reorder)
+            type: object
+            list: true
+            fields:
+              - name: src
+                label: Photo File
+                type: image
+                required: true
+              - name: caption
+                label: Photo Caption
+                type: string
+                required: true
+
+  - name: programs
+    label: Programs & Daily Activities
+    type: file
+    path: src/data/programs.json
+    format: json
+    fields:
+      - name: items
+        label: Programs List (Drag handles ⠿ to reorder)
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Program Title
+            type: string
+            required: true
+          - name: desc
+            label: Program Description
+            type: text
+            required: true
+          - name: img
+            label: Program Photo
+            type: image
+            required: true
+
+  - name: config
+    label: Bal Basera Settings & Home
+    type: file
+    path: src/data/config.json
+    format: json
+    fields:
+      - name: name
+        label: Full Name
+        type: string
+      - name: shortName
+        label: Short Name
+        type: string
+      - name: tagline
+        label: Tagline
+        type: string
+      - name: description
+        label: Meta Description
+        type: text
+      - name: capacity
+        label: Total Children Capacity (e.g. 80)
+        type: number
+      - name: hero
+        label: Homepage Hero Banner
+        type: object
+        fields:
+          - name: tag
+            label: Hero Badge Tag
+            type: string
+          - name: title
+            label: Hero Headline (HTML allowed)
+            type: string
+          - name: subtitle
+            label: Hero Subtitle
+            type: text
+          - name: img
+            label: Hero Background Photo
+            type: image
+      - name: stats
+        label: Homepage Impact Numbers (Drag handles ⠿ to reorder)
+        type: object
+        list: true
+        fields:
+          - name: value
+            label: Stat Value (e.g. 80, 100%)
+            type: string
+          - name: label
+            label: Stat Label (e.g. Children in Care)
+            type: string
+      - name: dayAtBalBasera
+        label: A Day at Bal Basera Routine (Drag handles ⠿ to reorder)
+        type: object
+        list: true
+        fields:
+          - name: timeOfDay
+            label: Time Tag (e.g. Morning, School Hours, Night)
+            type: string
+            required: true
+          - name: title
+            label: Activity Heading
+            type: string
+            required: true
+          - name: desc
+            label: Description
+            type: text
+            required: true
+          - name: img
+            label: Activity Photo
+            type: image
+            required: true
+      - name: about
+        label: About Page Text & Facility
+        type: object
+        fields:
+          - name: theNeed
+            label: "The Need Paragraph"
+            type: text
+          - name: theFounding
+            label: "The Founding Paragraph"
+            type: text
+          - name: facilityDesc
+            label: "Facility Overview Description"
+            type: text
+          - name: facilityImage
+            label: "Facility Photo"
+            type: image
+          - name: facilityPoints
+            label: "Facility Highlights (Drag to reorder)"
+            type: string
+            list: true
+          - name: complianceList
+            label: "Compliance & Registrations (Drag to reorder)"
+            type: string
+            list: true
+      - name: contact
+        label: Contact Details
+        type: object
+        fields:
+          - name: phone
+            label: Phone Display Text
+            type: string
+          - name: phoneRaw
+            label: Phone Link (Numbers only)
+            type: string
+          - name: email
+            label: Official Email
+            type: string
+          - name: address
+            label: Physical Address
+            type: text
+          - name: mapsEmbed
+            label: Google Maps Embed URL
+            type: string
+          - name: officeHours
+            label: Visiting Hours
+            type: string

@@ -1,0 +1,103 @@
+{
+  "name": "Bal Basera Child Care Home",
+  "shortName": "Bal Basera",
+  "tagline": "A Home. A Family. A Future.",
+  "description": "Bal Basera is a registered child care home in Jodhpur providing love, education, healthcare, and dignity to 80 children affected by HIV — an initiative of JNP Plus.",
+  "foundedYear": 2010,
+  "capacity": 80,
+  "parentOrg": {
+    "name": "JNP Plus (Jodhpur Network of People Living with HIV/AIDS Sansthan)",
+    "url": "https://jnpplus.org"
+  },
+  "hero": {
+    "tag": "Bal Basera | Since 2010",
+    "title": "A Home. A Family.<br/><em>A Future.</em>",
+    "subtitle": "Providing love, education, and dignity to 80 children in Jodhpur — an initiative of JNP Plus.",
+    "img": "/photos/20260521_180138-redacted_dot_app.jpg"
+  },
+  "stats": [
+    {
+      "value": "80",
+      "label": "Children in Care"
+    },
+    {
+      "value": "2010",
+      "label": "Year Established"
+    },
+    {
+      "value": "100%",
+      "label": "School Enrollment"
+    },
+    {
+      "value": "16+",
+      "label": "Years of Service"
+    }
+  ],
+  "dayAtBalBasera": [
+    {
+      "timeOfDay": "Morning",
+      "title": "Morning Routine & Yoga",
+      "desc": "The day begins with stretching, yoga, and fresh air in the open ground.",
+      "img": "/photos/20260430_181858.jpg"
+    },
+    {
+      "timeOfDay": "School Hours",
+      "title": "Formal Schooling",
+      "desc": "Every child attends local school. Education is non-negotiable.",
+      "img": "/photos/IMG_20260610_115054-redacted_dot_app.jpg"
+    },
+    {
+      "timeOfDay": "Afternoon",
+      "title": "Digital Literacy & Lab",
+      "desc": "Digital literacy: learning typing, browsing, and basic computing.",
+      "img": "/photos/20260708_153202.jpg"
+    },
+    {
+      "timeOfDay": "Creative Time",
+      "title": "Arts, Crafts & Skills",
+      "desc": "Hands-on creativity builds confidence and self-expression.",
+      "img": "/photos/20260526_115654.jpg"
+    },
+    {
+      "timeOfDay": "Evening",
+      "title": "Sports & Free Play",
+      "desc": "Sports, play, and the freedom to just be children.",
+      "img": "/photos/20260708_174214-redacted_dot_app.jpg"
+    },
+    {
+      "timeOfDay": "Night",
+      "title": "Family Time & Rest",
+      "desc": "A normal evening: football on TV, friends beside you, home around you.",
+      "img": "/photos/20260708_192933-redacted_dot_app.jpg"
+    }
+  ],
+  "about": {
+    "theNeed": "Children orphaned or made vulnerable by HIV/AIDS in Rajasthan face immense challenges, including stigma, poverty, and a profound lack of family support. Without intervention, these children are often trapped in cycles of vulnerability. Bal Basera exists to break this cycle, providing a safe, loving, and nurturing environment where they can heal, grow, and build a brighter future.",
+    "theFounding": "Bal Basera was established in August 2010 by Mr. Dinesh Joshi through JNP Plus (Jodhpur Network of People Living with HIV/AIDS Sansthan). The home was created with a clear vision: to offer a sanctuary for children who had nowhere else to turn. It is formally registered under the Juvenile Justice Act 2015 and is overseen by the Child Welfare Committee, Jodhpur, ensuring the highest standards of care and accountability.",
+    "facilityDesc": "Today, Bal Basera is a full residential care home, not just a day center. It is a true home where children live, learn, and play. Our physical space is designed to support every aspect of a child's development.",
+    "facilityImage": "/photos/20260708_161916-redacted_dot_app.jpg",
+    "facilityPoints": [
+      "Separate, safe dormitories for boys and girls",
+      "A dedicated study hall for focused learning",
+      "A fully equipped computer lab for digital literacy",
+      "A spacious playground and a beautiful garden",
+      "A nutritious kitchen providing balanced meals",
+      "A TV and recreation room for relaxation and entertainment"
+    ],
+    "complianceList": [
+      "Registered under the Juvenile Justice (JJ) Act 2015",
+      "Overseen by the Child Welfare Committee (CWC), Jodhpur",
+      "FCRA Certified for international contributions",
+      "80G Tax Exemption available",
+      "Parent Organization: JNP Plus - An initiative of JNP Plus, Jodhpur"
+    ]
+  },
+  "contact": {
+    "phone": "+91 94135 77969",
+    "phoneRaw": "+919413577969",
+    "email": "jodhpursansthan@yahoo.co.in",
+    "address": "Plot No. 17, Gayatri Nagar, Opp. Paliwal Eye Hospital, Pal Road, Jodhpur-342008, Rajasthan",
+    "mapsEmbed": "https://maps.google.com/maps?q=26.2420127,72.9743049&z=17&output=embed",
+    "officeHours": "Mon–Sat, 9 AM – 6 PM IST"
+  }
+}
