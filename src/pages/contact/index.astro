@@ -17,9 +17,7 @@ import Layout from '../../layouts/Layout.astro';
         <div class="contact-form">
           <h2>Send a Message</h2>
           <form id="bb-contact-form" novalidate>
-            <input type="hidden" name="_subject" value="New Inquiry — Bal Basera Website (balbasera.jnpplus.org)" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="text" name="_honey" style="display:none" />
+            <input type="text" name="fax_number" style="display:none !important;" tabindex="-1" autocomplete="off" />
 
             <div class="form-group">
               <label for="name">Your Name *</label>
@@ -301,7 +299,7 @@ form?.addEventListener('submit', async (e) => {
   const formData = new FormData(form);
 
   try {
-    const res = await fetch('https://formsubmit.co/ajax/jodhpursansthan@yahoo.co.in', {
+    const res = await fetch('https://cf-form-handling.tech-51f.workers.dev/submit/balbasera.jnpplus.org/contact', {
       method: 'POST',
       body: formData,
       headers: {
@@ -311,12 +309,15 @@ form?.addEventListener('submit', async (e) => {
 
     const data = await res.json();
 
-    if (res.ok && data.success !== 'false') {
+    if (res.ok && data.success) {
       btn.textContent = "✅ Message sent! We'll be in touch soon.";
       btn.style.background = '#2E7D32';
       form.reset();
+      if ((window as any).turnstile) {
+        (window as any).turnstile.reset();
+      }
     } else {
-      btn.textContent = "⚠️ Error sending. Please email us directly.";
+      btn.textContent = data.error ? `⚠️ ${data.error}` : "⚠️ Error sending. Please try again.";
       btn.style.background = '#D32F2F';
     }
   } catch (err) {
